@@ -1,0 +1,12 @@
+.action-td{
+    display: inline-flex;
+    border-top: none !important;
+}
+
+.padding5px{
+    padding: 5px;
+}
+
+.padding10px{
+    padding: 10px;
+}

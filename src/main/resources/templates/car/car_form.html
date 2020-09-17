@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Add Form</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+<div th:replace="fragments/top_bar.html :: div.top-bar"></div>
+<div th:replace="fragments/scripts.html :: div.scripts-top-bar"></div>
+<hr>
+<div class="container">
+    <h2>Car Form</h2>
+    <div class="form-group">
+        <form action="#" th:action="@{/save_car}" th:object="${car}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}"/>
+            <select class="form-control" th:field="*{employee}" >
+                <option value="0">Select Employee</option>
+                <option th:each="emp : ${empList}" th:selected="*{employee}" th:value="${emp.id}" th:text="${emp.firstName}"></option>
+            </select><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+            <input type="text" class="form-control" th:field="*{name}" placeholder="Name"><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('model')}" th:errors="*{model}"/>
+            <input type="text" class="form-control" th:field="*{model}" placeholder="Model"><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('registrationDate')}" th:errors="*{registrationDate}"/>
+            <input type="date" class="form-control" th:field="*{registrationDate}" placeholder="Registration Date"><br>
+
+            <input type="submit" th:value="Save" class="btn btn-danger">
+        </form>
+        <hr>
+    </div>
+</div>
+</body>
+</html>
